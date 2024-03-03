@@ -5,7 +5,7 @@
     <title>Brittany Payne</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body><!--add a header-->
     <header>
         <div class="container">
             <img class="logo" src="images/IMG_1127.JPG" alt="logo">
@@ -17,20 +17,33 @@
             </u1>
         </nav>
     </header>
-    <section class="home">
-        <div class="from-container">
-            <form class="contact-form">
-                <h2>Contact</h2>
-                <input type="text" id="name" placeholder="Full name">
-                <input type="email" id name="email" placeholder="Email">
-                <input type="test" id name="subject" placeholder="Subject">
-                <input type="message" id name="message" placeholder="Message">
-                <input type="submit" class="submit" value="Send Message">
-            </form>
-            <div class="text-container">
-                <p> Thank you so much for visiting my site! If you have any questions, please email me.</p>
+   <section class="contact-form" id="contact"> <!--create a contact form-->
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <div class="input-box"> <!--helps with making boxes-->
+                <h2 class="contact-me">Contact Me</h2>
+                <input type="text" placeholder="Full Name" required>
+                <input  type="email" placeholder="Email"required>
+                <input type="number" placeholder="Phone Number"required>
+                <textarea rows="10" placeholder="Your message"></textarea> <!--makes this box bigger than the other ones-->
+                <button type="submit">Send Message</button>
             </div>
-        </div>
+        </form>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+            function sendEmail(){
+                Email.send({
+                    Host : "smtp.gmail.com",
+                    Username : "seyselaa@gmail.com",
+                    Password : "ByunBaek@1",
+                    To : 'seyselaaa@gmail.com',
+                    From : document.getElementById("email").value,
+                    Subject : "New Contact Form",
+                    Body : "Name:" + document.getElementById("name").value + "<br. Email: "+ document.getElementsById("name").value + "<br. Phone: "+ document.getElementsById("phone").value + "<br. Message: "+ document.getElementsById("message").value
+                }).then(
+                message => alert("Message Sent Successfully")
+                );
+            }
+        </script>
     </section>
     <script scr="Web Dev Project/node.js"></script>
 </body>
